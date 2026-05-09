@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Cabocash-style MVP",
+    "slug": "cabocash-style-mvp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/design-reference.jpg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/design-reference.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.cabocashstyle.mvp",
+      "permissions": [
+        "READ_CONTACTS"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/design-reference.jpg",
+        "backgroundColor": "#003DA5"
+      }
+    },
+    "ios": {
+      "infoPlist": {
+        "NSContactsUsageDescription": "Cabocash needs contacts access so you can choose a saved phone number when sending money."
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
