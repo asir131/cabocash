@@ -45,16 +45,17 @@ export function SendMoneyScreen({ navigation }: { navigation: any }) {
   const { t } = useLanguage();
 
   async function handleOpenContactPicker() {
+    setContactPickerVisible(true);
     setLoadingContacts(true);
 
     try {
       const { status } = await Contacts.requestPermissionsAsync();
       if (status !== "granted") {
+        setContactPickerVisible(false);
         Alert.alert(t("send.contactsPermissionTitle"), t("send.contactsPermissionMessage"));
         return;
       }
 
-      setContactPickerVisible(true);
       const { data } = await Contacts.getContactsAsync({
         fields: [Contacts.Fields.PhoneNumbers],
         sort: Contacts.SortTypes.FirstName
@@ -101,17 +102,17 @@ export function SendMoneyScreen({ navigation }: { navigation: any }) {
             keyboardType="phone-pad"
             style={styles.input}
           />
-          <View style={styles.inputDivider} />
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityLabel={t("send.chooseContact")}
-            style={styles.contactButton}
-            onPress={handleOpenContactPicker}
-            activeOpacity={0.75}
-          >
-            <Ionicons name="person-outline" size={23} color={colors.primary} />
-          </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={t("send.selectFromContacts")}
+          style={styles.chooseContactButton}
+          onPress={handleOpenContactPicker}
+          activeOpacity={0.84}
+        >
+          <Ionicons name="people-outline" size={20} color={colors.primary} />
+          <Text style={styles.chooseContactText}>{t("send.selectFromContacts")}</Text>
+        </TouchableOpacity>
 
         <Text style={styles.label}>{t("send.amount")}</Text>
         <View style={styles.inputBox}>
@@ -234,18 +235,23 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600"
   },
-  inputDivider: {
-    width: 1,
-    height: 30,
-    backgroundColor: colors.border,
-    marginRight: 14
-  },
-  contactButton: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
+  chooseContactButton: {
+    minHeight: 48,
+    borderRadius: 9,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    backgroundColor: "#EAF1FF",
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    gap: 9,
+    marginTop: 10,
+    paddingHorizontal: 14
+  },
+  chooseContactText: {
+    color: colors.primary,
+    fontSize: 15,
+    fontWeight: "800"
   },
   inputBox: {
     height: 78,

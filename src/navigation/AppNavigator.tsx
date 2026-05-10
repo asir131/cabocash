@@ -4,14 +4,20 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomBottomTab } from "../components/CustomBottomTab";
 import { colors } from "../constants/colors";
+import { BalanceDetailsScreen } from "../screens/BalanceDetailsScreen";
 import { ContactsScreen } from "../screens/ContactsScreen";
 import { HomeScreen } from "../screens/HomeScreen";
+import { LoginScreen } from "../screens/LoginScreen";
+import { ProfileInfoScreen } from "../screens/ProfileInfoScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
 import { RequestMoneyScreen } from "../screens/RequestMoneyScreen";
 import { RequestMoneyFormScreen } from "../screens/RequestMoneyFormScreen";
 import { SendMoneyScreen } from "../screens/SendMoneyScreen";
+import { SignUpScreen } from "../screens/SignUpScreen";
+import { TopUpScreen } from "../screens/TopUpScreen";
 import { TransactionsScreen } from "../screens/TransactionsScreen";
 import { RootStackParamList, TabParamList } from "./types";
+import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -50,12 +56,26 @@ function MainTabs() {
 }
 
 export function AppNavigator() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="MainTabs" component={MainTabs} />
-      <Stack.Screen name="SendMoney" component={SendMoneyScreen} />
-      <Stack.Screen name="RequestMoney" component={RequestMoneyScreen} />
-      <Stack.Screen name="RequestMoneyForm" component={RequestMoneyFormScreen} />
+      {isAuthenticated ? (
+        <>
+          <Stack.Screen name="MainTabs" component={MainTabs} />
+          <Stack.Screen name="BalanceDetails" component={BalanceDetailsScreen} />
+          <Stack.Screen name="TopUp" component={TopUpScreen} />
+          <Stack.Screen name="SendMoney" component={SendMoneyScreen} />
+          <Stack.Screen name="RequestMoney" component={RequestMoneyScreen} />
+          <Stack.Screen name="RequestMoneyForm" component={RequestMoneyFormScreen} />
+          <Stack.Screen name="ProfileInfo" component={ProfileInfoScreen} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+        </>
+      )}
     </Stack.Navigator>
   );
 }

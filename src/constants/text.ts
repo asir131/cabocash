@@ -18,10 +18,19 @@ type TranslationKey =
   | "home.topup"
   | "home.recent"
   | "home.seeAll"
+  | "balanceDetails.title"
+  | "balanceDetails.availableBalance"
+  | "balanceDetails.totalSent"
+  | "balanceDetails.pendingRequest"
+  | "balanceDetails.topUpTotal"
+  | "balanceDetails.transactionHistory"
+  | "topUp.title"
+  | "topUp.subtitle"
   | "send.title"
   | "send.to"
   | "send.phonePlaceholder"
   | "send.chooseContact"
+  | "send.selectFromContacts"
   | "send.contactPickerTitle"
   | "send.contactsLoading"
   | "send.noContacts"
@@ -83,10 +92,19 @@ export const labels: Record<LanguageCode, Record<TranslationKey, string>> = {
     "home.topup": "Carregar",
     "home.recent": "Transações Recentes",
     "home.seeAll": "Ver tudo",
+    "balanceDetails.title": "Detalhes do saldo",
+    "balanceDetails.availableBalance": "Saldo disponivel",
+    "balanceDetails.totalSent": "Total enviado",
+    "balanceDetails.pendingRequest": "Pedidos pendentes",
+    "balanceDetails.topUpTotal": "Total carregado",
+    "balanceDetails.transactionHistory": "Historico de transacoes",
+    "topUp.title": "Carregar saldo",
+    "topUp.subtitle": "Escolha uma forma de carregar a sua conta.",
     "send.title": "Enviar Dinheiro",
     "send.to": "Para",
     "send.phonePlaceholder": "Número de telemóvel",
     "send.chooseContact": "Escolher contacto",
+    "send.selectFromContacts": "Escolher dos contactos",
     "send.contactPickerTitle": "Contactos",
     "send.contactsLoading": "A carregar contactos...",
     "send.noContacts": "Nenhum contacto com número encontrado.",
@@ -147,10 +165,19 @@ export const labels: Record<LanguageCode, Record<TranslationKey, string>> = {
     "home.topup": "Top Up",
     "home.recent": "Recent Transactions",
     "home.seeAll": "See all",
+    "balanceDetails.title": "Balance Details",
+    "balanceDetails.availableBalance": "Available balance",
+    "balanceDetails.totalSent": "Total sent",
+    "balanceDetails.pendingRequest": "Pending request money",
+    "balanceDetails.topUpTotal": "Top up total",
+    "balanceDetails.transactionHistory": "Transaction history",
+    "topUp.title": "Top Up",
+    "topUp.subtitle": "Choose a way to add money to your account.",
     "send.title": "Send Money",
     "send.to": "To",
     "send.phonePlaceholder": "Mobile number",
     "send.chooseContact": "Choose contact",
+    "send.selectFromContacts": "Choose from contacts",
     "send.contactPickerTitle": "Contacts",
     "send.contactsLoading": "Loading contacts...",
     "send.noContacts": "No contacts with phone numbers found.",

@@ -26,11 +26,11 @@ export function HomeScreen() {
           <AppHeader greeting={t("home.greeting")} right={<Ionicons name="notifications-outline" size={28} color={colors.primary} />} />
         </View>
       </View>
-      <BalanceCard />
+      <BalanceCard onPressDetails={() => navigation.navigate("BalanceDetails")} />
       <View style={styles.actions}>
         <ActionCard title={t("home.send")} color={colors.primary} icon="paper-plane" onPress={() => navigation.navigate("SendMoney")} />
         <ActionCard title={t("home.request")} color={colors.red} icon="people" onPress={() => navigation.navigate("RequestMoney")} />
-        <ActionCard title={t("home.topup")} color={colors.gold} icon="add" />
+        <ActionCard title={t("home.topup")} color={colors.gold} icon="add" onPress={() => navigation.navigate("TopUp")} />
       </View>
       <View style={styles.sectionHeader}>
         <Text style={styles.sectionTitle}>{t("home.recent")}</Text>

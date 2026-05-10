@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../constants/colors";
 import { useLanguage } from "../context/LanguageContext";
 
-export function BalanceCard() {
+export function BalanceCard({ onPressDetails }: { onPressDetails?: () => void }) {
   const { t } = useLanguage();
 
   return (
@@ -15,7 +15,7 @@ export function BalanceCard() {
           <Text style={styles.amount}>12.500</Text>
           <Text style={styles.currency}>CVE</Text>
         </View>
-        <TouchableOpacity style={styles.details} activeOpacity={0.75}>
+        <TouchableOpacity style={styles.details} onPress={onPressDetails} activeOpacity={0.75}>
           <Text style={styles.detailsText}>{t("home.details")}</Text>
           <Ionicons name="chevron-forward" size={18} color={colors.white} />
         </TouchableOpacity>
